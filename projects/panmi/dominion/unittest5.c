@@ -2,13 +2,11 @@
  * unittest5.c
  *
  * Mine actions:
- * Trash a copper for a silver
- * Or trash a silver for a gold
+ * allows you to trash your Coppers to gain Silvers and trash your Silvers to gain Golds
  * 
  * unittest5: unittest5.c dominion.o rngs.o
  * 	gcc -o unittest5 -g unittest5.c dominion.o rngs.o $(CFLAGS)
  * 
- * Note: Much of the below code uses parts of cardtest4.c example from Week 3 module
  * * */
 
 
