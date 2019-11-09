@@ -1387,14 +1387,16 @@ int mineCard(struct gameState *state, int currentPlayer, int choice1, int choice
     int i;
     int j;
     j = state->hand[currentPlayer][choice1];  //store card we will trash
-    
+    //printf("testing");
+    //j = choice1;
+   //printf(j);
     //Introducing bug: Does not check if the selected card is a treasure card
-    /*
-    if (state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold)
-    {
-        return -1;
-    }
-    */
+    //
+    //if (state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold)
+    //{
+      //  return -1;
+    //}
+    
     if (choice2 > treasure_map || choice2 < curse)
     {
         return -1;
@@ -1408,8 +1410,7 @@ int mineCard(struct gameState *state, int currentPlayer, int choice1, int choice
     gainCard(choice2, state, 2, currentPlayer);
 
     //discard card from hand
-    //Introducing bug as does not discard the trashed card from hand
-    //discardCard(handPos, currentPlayer, state, 0);
+    discardCard(handPos, currentPlayer, state, 0);
 
     //discard trashed card
     for (i = 0; i < state->handCount[currentPlayer]; i++)
@@ -1554,7 +1555,7 @@ int tributeCard(struct gameState *state, int nextPlayer, int currentPlayer, int 
             }
         }
     }
-
+    
     else {
         if (state->deckCount[nextPlayer] == 0) {
             for (i = 0; i < state->discardCount[nextPlayer]; i++) {
@@ -1573,6 +1574,7 @@ int tributeCard(struct gameState *state, int nextPlayer, int currentPlayer, int 
         state->deck[nextPlayer][state->deckCount[nextPlayer]--] = -1;
         state->deckCount[nextPlayer]--;
     }
+    
     //Introducing bug as to not consider duplicates
     /*
     if (tributeRevealedCards[0] == tributeRevealedCards[1]) { //If we have a duplicate card, just drop one
@@ -1623,10 +1625,10 @@ int ambassadorCard(int choice1, int choice2, int currentPlayer, int handPos, str
             j++;
         }
     }
-    if (j < choice2)
-    {
-        return -1;
-    }
+    //if (j < choice2)
+    //{
+       // return -1;
+    //}
 
     if (DEBUG)
         printf("Player %d reveals card number: %d\n", currentPlayer, state->hand[currentPlayer][choice1]);
